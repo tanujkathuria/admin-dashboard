@@ -1,10 +1,9 @@
 import * as actionTypes from './actionTypes';
-import axios from "axios";
-
+import Axios from '../../Axios';
 
 export const setAssociateData = (data) => {
     return dispatch => {
-        axios.post('http://localhost:8080/saveAssociate', JSON.stringify(data), {
+        Axios.post('/saveAssociate', JSON.stringify(data), {
             headers: {"Content-Type": "application/JSON"}
         }).then(
             response => {
@@ -32,7 +31,7 @@ export const setBudgetDataSuccess = (data) => {
 
 export const setBudgetData = (data) => {
     return dispatch => {
-        axios.post('http://localhost:8080/saveBudget', JSON.stringify(data), {
+        Axios.post('/saveBudget', JSON.stringify(data), {
             headers: {"Content-Type": "application/JSON"}
         }).then(
             response => {
@@ -52,11 +51,11 @@ export const setAssociateDeltaSuccess = (data) => {
 
 export const setAssociateDelta = (data) => {
     return dispatch => {
-        axios.put('http://localhost:8080/appendAssociate', JSON.stringify(data), {
+        Axios.put('/appendAssociate', JSON.stringify(data), {
             headers: {"Content-Type": "application/JSON"}
         }).then(
             response => {
-                axios.get('http://localhost:8080/getAssociateData')
+                Axios.get('/getAssociateData')
                     .then(
                         response => {
                             console.log(response.data);
@@ -85,7 +84,7 @@ export const fetchAssociateDataSuccess = (data) => {
 
 export const fetchAssociateData = () => {
      return dispatch => {
-         axios.get('http://localhost:8080/getAssociateData')
+         Axios.get('/getAssociateData')
              .then(
                  response => {
                      dispatch(fetchAssociateDataSuccess(response.data))
@@ -101,7 +100,7 @@ export const fetchAssociateData = () => {
 
 export const fetchBudgetData = () => {
     return dispatch => {
-        axios.get('http://localhost:8080/getBudgetData')
+        Axios.get('/getBudgetData')
             .then(
                 response => {
                     dispatch(fetchBudgetDataSuccess(response.data))
