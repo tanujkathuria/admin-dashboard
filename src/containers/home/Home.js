@@ -5,18 +5,13 @@ import FilesUpload from '../../components/files-upload/FilesUpload';
 import FilesDownload from '../../components/files-download/FilesDownload';
 import * as actions from '../../store/actions/index';
 import {connect} from "react-redux";
-
+import * as constants from '../../util/Constants';
 
 class Home extends Component {
-
 
     componentDidMount() {
         this.props.fetchAssociateData();
         this.props.fetchBudgetData();
-    }
-
-    constructor() {
-        super();
     }
 
 
@@ -29,11 +24,11 @@ class Home extends Component {
     // On file upload (click the upload button)
     onFileUpload = () => {
         // save associate data
-        if(this.props.selectedFileType == 'eligibleAssociateFile' ){
+        if(this.props.selectedFileType == constants.ELIGIBLE_ASSOCIATE_FILE ){
             this.props.setAssociateData(this.props.data);
         }
         //update the associate data using delta file
-        else if(this.props.selectedFileType == 'eligibleAssociateDeltaFile') {
+        else if(this.props.selectedFileType == constants.ELIGIBLE_ASSOCIATE_DELTA_FILE) {
             this.props.setAssociateDelta(this.props.data);
         }
         //save budget data
@@ -43,9 +38,6 @@ class Home extends Component {
     };
 
     handleUploadedFiles = files => {
-        this.setState({
-            data: [],
-        });
         var reader = new FileReader();
         reader.onload = (e) => {
             //Split csv file data by new line so that we can skip first row which is header
@@ -57,16 +49,8 @@ class Home extends Component {
                     const elementRaw = element.split(',');
                     if(element) {
                         let param = null;
-                        if(this.props.selectedFileType == 'eligibleAssociateFile' ){
-                            param = {
-                                'id' : elementRaw[0],
-                                'age' : elementRaw[1],
-                                'experience' : elementRaw[2],
-                                'name' : elementRaw[3]
-                            }
-                            data.push(param);
-                        }
-                        else if(this.props.selectedFileType == 'eligibleAssociateDeltaFile') {
+                        if(this.props.selectedFileType == constants.ELIGIBLE_ASSOCIATE_FILE
+                            || this.props.selectedFileType == constants.ELIGIBLE_ASSOCIATE_DELTA_FILE ){
                             param = {
                                 'id' : elementRaw[0],
                                 'age' : elementRaw[1],

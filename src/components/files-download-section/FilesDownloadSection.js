@@ -1,28 +1,14 @@
 import React,{Component} from 'react';
 import classes from './FilesDownloadSection.module.css';
-
 import { CSVLink } from "react-csv";
-
-
-
-const associateHeaders = [
-    { label: "id", key: "id" },
-    { label: "age", key: "age" },
-    { label: "experience", key: "experience" },
-    { label: "name", key: "name" }
-];
-const budgetHeaders = [
-    { label: "id", key: "id" },
-    { label: "name", key: "name" },
-    { label: "profit", key: "profit" }
-];
+import * as constants from '../../util/Constants';
 
 const FilesDownloadSection = (props) =>  {
         return (
             <div className={classes.FilesDownloadSection}>
-                <CSVLink data={props.associateData} headers={associateHeaders} filename={"AssociateData.csv"}
+                <CSVLink data={props.associateData} headers={constants.ASSOCIATE_HEADERS} filename={constants.ASSOCIATE_FILENAME}
                          className={classes.round} > ASSOCIATE DATA</CSVLink>
-                <CSVLink data={props.budgetData} headers={budgetHeaders} filename={"BudgetData.csv"}
+                <CSVLink data={props.budgetData} headers={constants.BUDGET_HEADERS} filename={constants.BUDGET_FILENAME}
                          className={classes.round} > BUDGET DATA</CSVLink>
             </div>
         );

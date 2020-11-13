@@ -8,7 +8,6 @@ export const setAssociateData = (data) => {
             headers: {"Content-Type": "application/JSON"}
         }).then(
             response => {
-                console.log(response.data)
                 dispatch(setAssociateDataSuccess(response.data))
             })
             .catch(error => {
@@ -37,7 +36,6 @@ export const setBudgetData = (data) => {
             headers: {"Content-Type": "application/JSON"}
         }).then(
             response => {
-                console.log(response.data);
                 dispatch(setBudgetDataSuccess(response.data))
             })
             .catch(error => {
@@ -58,7 +56,6 @@ export const setAssociateDelta = (data) => {
             headers: {"Content-Type": "application/JSON"}
         }).then(
             response => {
-                console.log(response.data);
                 axios.get('http://localhost:8080/getAssociateData')
                     .then(
                         response => {
@@ -80,8 +77,6 @@ export const setAssociateDelta = (data) => {
 
 
 export const fetchAssociateDataSuccess = (data) => {
-    console.log('fetchAssociateDataSuccess');
-    console.log(data);
     return {
         type: actionTypes.FETCH_ASSOCIATE_DATA,
         data: data
@@ -93,7 +88,6 @@ export const fetchAssociateData = () => {
          axios.get('http://localhost:8080/getAssociateData')
              .then(
                  response => {
-                     console.log(response.data);
                      dispatch(fetchAssociateDataSuccess(response.data))
                  })
              .catch(
@@ -122,7 +116,6 @@ export const fetchBudgetData = () => {
 
 
 export const fetchBudgetDataSuccess = (data) => {
-    console.log('fetchBudgetDataSuccess');
     return {
         type: actionTypes.FETCH_BUDGET_DATA,
         data: data
@@ -146,7 +139,6 @@ export const setSelectedFileName = (fileName, disabled) => {
 }
 
 export const setSelectedFile = (file) => {
-    console.log(file)
     return {
         type: actionTypes.SET_SELECTED_FILE,
         file: file,

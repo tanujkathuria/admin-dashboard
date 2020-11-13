@@ -11,7 +11,6 @@ const FilesUploader = (props) => {
             <ReactFileReader handleFiles={props.handleUploadedFiles} fileTypes={'.csv'}>
                 <Button disabled = {props.disabled} id={props.id} btnType='round' >Upload </Button>
             </ReactFileReader>
-
             <Button disabled = {props.disabled} btnType='filledRound' clicked={props.onFileUpload}>SUBMIT </Button>
             {props.filename}
         </div>

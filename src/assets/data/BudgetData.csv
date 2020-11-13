@@ -1,4 +1,11 @@
-﻿Id ,Employee_name ,age
-1,budget,30
-2,budget,21
-3,budget ,22
+﻿id,name,profit
+1,abc,30000
+2,xyz,50000
+3,stu,10000
+4,yux,1000
+5,qwe,11111
+1,abc,30000
+2,xyz,50000
+3,stu,10000
+4,yux,1000
+5,qwe,11111
