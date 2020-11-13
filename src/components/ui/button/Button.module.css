@@ -1,0 +1,35 @@
+.Button {
+    background-color: transparent;
+    border: none;
+    color: white;
+    outline: none;
+    cursor: pointer;
+    font: inherit;
+    padding: 10px;
+    margin: 10px;
+    font-weight: bold;
+}
+
+.round{
+    background-color: white;
+    border-radius:20px;
+    margin-left: 10px;
+    color: #365EBF;
+    border-width: 1px;
+    border-color: lightgray;
+    border-style: solid;
+}
+
+.filledRound{
+    background-color: #365EBF;
+    border-radius:20px;
+    margin-left: 10px;
+    color: white;
+    border-width: 1px;
+    border-color: lightgray;
+    border-style: solid;
+
+}
+button:disabled {
+    opacity: 0.5;
+}

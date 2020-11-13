@@ -1,0 +1,2 @@
+export const ELIGIBLE_ASSOCIATE_FILE = "eligibleAssociateFile"
+export const ELIGIBLE_ASSOCIATE_DELTA_FILE = "eligibleAssociateDeltaFileeligibleAssociateDeltaFile"
