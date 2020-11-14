@@ -18,3 +18,4 @@ export const ASSOCIATE_FILENAME = "AssociateData.csv";
 export const BUDGET_FILENAME = "BudgetData.csv";
 export const FILE_UPLOAD_HEADER = "Files Upload";
 export const FILE_DOWNLOAD_HEADER = "Files Download";
+export const SUCCESS_MESSAGE = "File has been uploaded successfully"

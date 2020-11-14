@@ -73,25 +73,39 @@ class Home extends Component {
             this.props.setData(data);
         }
 
-        reader.readAsText(files[0]);
-        this.props.setSelectedFile(files[0]);
-        this.props.setSelectedFileName(files[0].name, false);
+        if(files && files[0]){
+            reader.readAsText(files[0]);
+            this.props.setSelectedFile(files[0]);
+            this.props.setSelectedFileName(files[0].name, false);
+        }
     }
 
+
     render() {
+
         return (
             <div className={classes.Home}>
+                {this.props.error ? (
+                        <div className="alert alert-danger" role="alert">
+                            {this.props.error}
+                        </div>
+                ): ''}
+                {this.props.message ? (
+                    <div className="alert alert-success" role="alert">
+                        {this.props.message}
+                    </div>
+                ): ''}
                 <FilesUpload filename = {this.props.selectedFileName}
                              handleUploadedFiles ={this.handleUploadedFiles}
                              disabled = {this.props.disabled}
                              id={this.props.id}
                              fileSelected = {this.fileSelected}
                              onFileChange={this.onFileChange}
-                             onFileUpload={this.onFileUpload} />
+                             onFileUpload={this.onFileUpload}/>
                 <FilesDownload associateData={ this.props.associateData}
                                budgetData = {this.props.budgetData}/>
             </div>
-        );
+        )
     }
 
 };
@@ -106,7 +120,8 @@ const mapDispatchToProps = dispatch => {
         setData : (data) => dispatch(actions.setData(data)),
         setSelectedFileName : (fileName, disabled) => dispatch(actions.setSelectedFileName(fileName, disabled)),
         setSelectedFile : (file) => dispatch(actions.setSelectedFile(file)),
-        setSelectedFileType :  (fileType, disabled) => dispatch(actions.setSelectedFileType(fileType, disabled))
+        setSelectedFileType :  (fileType, disabled) => dispatch(actions.setSelectedFileType(fileType, disabled)),
+        setError : (error) => dispatch(actions.setError(error))
     }
 }
 
@@ -121,7 +136,9 @@ const mapStateToProps = state => {
         selectedFileName: state.reducer.selectedFileName,
         selectedFileType: state.reducer.selectedFileType,
         selectedFile: state.reducer.selectedFile,
-        id: state.reducer.id
+        id: state.reducer.id,
+        error: state.reducer.error,
+        message: state.reducer.message
 
     }
 }

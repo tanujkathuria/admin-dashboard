@@ -1,4 +1,5 @@
 import * as actionTypes from '../actions/actionTypes';
+import * as constants from '../../util/Constants'
 
 const initialState= {
     selectedFile: null,
@@ -8,7 +9,9 @@ const initialState= {
     selectedFileType:'',
     data : [],
     associateData: [],
-    budgetData: []
+    budgetData: [],
+    error: '',
+    message:''
 };
 
 const reducer = (state = initialState, action) => {
@@ -26,17 +29,20 @@ const reducer = (state = initialState, action) => {
         case actionTypes.SET_ASSOCIATE_DATA:
             return{
                 ...state,
-                associateData: action.data
+                associateData: action.data,
+                message:constants.SUCCESS_MESSAGE
             };
         case actionTypes.SET_BUDGET_DATA:
             return{
                 ...state,
-                budgetData: action.data
+                budgetData: action.data,
+                message:constants.SUCCESS_MESSAGE
             };
         case actionTypes.SET_ASSOCIATE_DELTA:
             return{
                 ...state,
-                associateData: action.data
+                associateData: action.data,
+                message: constants.SUCCESS_MESSAGE
             };
         case actionTypes.SET_DATA:
             return{
@@ -47,7 +53,8 @@ const reducer = (state = initialState, action) => {
             return{
                 ...state,
                 selectedFileName: action.fileName,
-                disabled: action.disabled
+                disabled: action.disabled,
+                message:''
             };
         case actionTypes.SET_SELECTED_FILE:
             return{
@@ -59,6 +66,11 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 selectedFileType: action.selectedFileType,
                 disabled: action.disabled
+            };
+        case actionTypes.SET_ERROR:
+            return{
+                ...state,
+                error: action.error
             };
 
         default:

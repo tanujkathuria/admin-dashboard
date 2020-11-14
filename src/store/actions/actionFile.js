@@ -10,7 +10,7 @@ export const setAssociateData = (data) => {
                 dispatch(setAssociateDataSuccess(response.data))
             })
             .catch(error => {
-                console.log(error);
+                dispatch(setError(error.message));
             })
     }
 }
@@ -38,7 +38,7 @@ export const setBudgetData = (data) => {
                 dispatch(setBudgetDataSuccess(response.data))
             })
             .catch(error => {
-                console.log(error);
+                dispatch(setError(error.message));
             })
     }
 }
@@ -58,17 +58,17 @@ export const setAssociateDelta = (data) => {
                 Axios.get('/getAssociateData')
                     .then(
                         response => {
-                            console.log(response.data);
                             dispatch(setAssociateDeltaSuccess(response.data));
                         })
                     .catch(
                         error => {
-                            console.log(error);
+                            dispatch(setError(error.message));
                         }
                     )
             })
             .catch(error => {
-                console.log(error);
+                console.log(error.message);
+                dispatch(setError(error.message));
             })
     }
 
@@ -91,7 +91,7 @@ export const fetchAssociateData = () => {
                  })
              .catch(
                  error => {
-                     console.log(error);
+                     dispatch(setError(error.message));
                  }
              )
          }
@@ -107,7 +107,7 @@ export const fetchBudgetData = () => {
                 })
             .catch(
                 error => {
-                    console.log(error);
+                    dispatch(setError(error.message));
                 }
             )
     }
@@ -153,3 +153,9 @@ export const setSelectedFileType = (selectedFileType, disabled) => {
 }
 
 
+export const setError = (error) => {
+    return {
+        type: actionTypes.SET_ERROR,
+        error: error,
+    }
+}
