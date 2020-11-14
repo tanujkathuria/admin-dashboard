@@ -1,6 +1,11 @@
-# Getting Started with Create React App
+# How to get started with Admin Dashboard App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project contains the admin dashboard features which includes selecting any of the file types and uploading them as well as downloading them based on the file types like Associate Data or Budget Data. 
+
+You can run this project using npm install to load the packages in node_modules. Then running the command npm start. 
+
+Initially the upload and submit buttons will be disabled and on selection of any of the radio buttons they will be enabled.
+
 
 ## Available Scripts
 
